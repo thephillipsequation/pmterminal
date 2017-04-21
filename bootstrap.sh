@@ -23,28 +23,6 @@ rm -rf fonts
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 cp ~/.zshrc ~/.zshrc.orig
-cp ./zshrc ~/.zshrc
+cp ./.zshrc ~/.zshrc
 
-osascript <<END
-if isAppRunning("iTerm") then
-	tell application "iTerm"
-		set myterm to (make new terminal)
-		tell myterm
-			set mysession to (make new session at the end of sessions)
-			tell mysession
-				exec command "/bin/bash -l"
-			end tell
-		end tell
-		activate
-	end tell
-else
-	activate application "iTerm"
-end if
-
-(* Code from Dweller on
- *  http://codesnippets.joyent.com/posts/show/1124
- *)
-on isAppRunning(appName)
-	tell application "System Events" to (name of processes) contains appName
-end isAppRunning
-END
+osascript -e "tell application \"Iterm\" to activate"
