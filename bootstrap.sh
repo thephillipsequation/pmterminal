@@ -23,6 +23,6 @@ rm -rf fonts
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 cp ~/.zshrc ~/.zshrc.orig
-cp ./zshrc ~/.zshrc
+cp ./.zshrc ~/.zshrc
 
-osascript ./new-iterm-window.scpt
+osascript -e "tell application \"Iterm\" to activate"

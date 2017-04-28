@@ -123,4 +123,46 @@ sunglasses() {
 	echo     " (⌐■_■)	"; sleep 1; 
 }
 
-sunglasses
+
+
+tunnel-away(){
+	ssh -D 2001 openvpnas@ec2-34-199-130-180.compute-1.amazonaws.com
+	sunglasses
+}
+
+# Delete a given line number in the known_hosts file.
+knownrm() {
+  re='^[0-9]+$'
+  if ! [[ $1 =~ $re ]] ; then
+    echo "error: line number missing" >&2;
+  else
+    sed -i '' "$1d" ~/.ssh/known_hosts
+  fi
+}
+
+
+####Enable M$ Things
+
+autoload bashcompinit
+bashcompinit
+
+azure(){
+  docker run -it microsoft/azure-cli
+}
+
+
+
+
+_python_argcomplete() {
+    local IFS=''
+    COMPREPLY=( $(IFS="$IFS"                   COMP_LINE="$COMP_LINE"                   COMP_POINT="$COMP_POINT"                   _ARGCOMPLETE_COMP_WORDBREAKS="$COMP_WORDBREAKS"                   _ARGCOMPLETE=1                   "$1" 8>&1 9>&2 1>/dev/null 2>/dev/null) )
+    if [[ $? != 0 ]]; then
+        unset COMPREPLY
+    fi
+}
+
+complete -o nospace -F _python_argcomplete "az"
+
+
+export PATH=$PATH:/Users/thephillipsequation/bin
+
