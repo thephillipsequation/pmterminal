@@ -1,7 +1,7 @@
 # pmterminal
 pimp my terminal
 
-#If you're brave run the following
+## To be issue your playa card run the following
 `./boostrap.sh`
 
-#I haven't had a chance to test this yet :(
+#tested on local Mac YMMV. Put an issue request up or email for help
